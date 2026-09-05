@@ -1,0 +1,8 @@
+replicaCount: 1
+image:
+  repository: ghcr.io/aah20/kubernetes-ai-agent-operator
+  tag: "0.1.0"
+  digest: ""
+resources:
+  requests: {cpu: 100m, memory: 128Mi}
+  limits: {cpu: 500m, memory: 256Mi}

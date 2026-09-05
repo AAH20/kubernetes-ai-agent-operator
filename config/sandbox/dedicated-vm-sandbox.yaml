@@ -1,0 +1,24 @@
+apiVersion: extensions.agents.x-k8s.io/v1beta1
+kind: SandboxTemplate
+metadata:
+  name: dedicated-vm-sandbox
+spec:
+  podTemplate:
+    metadata:
+      labels: {agentmesh.io/managed: "true"}
+    spec:
+      runtimeClassName: kata-qemu
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: agent-runtime
+          image: ghcr.io/aah20/agentmesh-runtime@sha256:replace-with-reviewed-digest
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          resources:
+            requests: {cpu: "1", memory: 2Gi}
+            limits: {cpu: "2", memory: 4Gi}

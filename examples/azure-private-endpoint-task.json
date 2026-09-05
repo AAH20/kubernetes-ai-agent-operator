@@ -1,0 +1,18 @@
+{
+  "generation": 1,
+  "spec": {
+    "taskId": "azure-private-endpoint-001",
+    "objective": "Prepare a reviewed Terraform correction for Azure Private Endpoint DNS resolution.",
+    "acceptanceCriteria": ["terraform plan succeeds", "Checkov passes", "Infracost attached", "pull request created"],
+    "capabilities": {"terraform.plan":"allow","checkov.scan":"allow","infracost.estimate":"allow","github.pull_request.create":"allow","terraform.apply":"approval","github.merge":"deny"},
+    "dataClassification": "restricted",
+    "tenantTrust": "untrusted_multi_tenant",
+    "mutationImpact": "production",
+    "maximumCostUSD": 5,
+    "estimatedAgentUSD": 1.2,
+    "contextRefs": ["git:azure-network@main", "graph:landing-zone-v3", "artifact:change-request-1842"],
+    "idempotencyKey": "private-endpoint-001-v1",
+    "policyVersion": "agentmesh-policy-v1"
+  },
+  "status": {"phase":"Pending","observedGeneration":0}
+}
